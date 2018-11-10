@@ -1,15 +1,20 @@
 const path = require("path");
+let friendData = require("../data/friends.json");
+
+console.log(friendData);
 
 module.exports = function(app) {
     app.get("/api/friends", (req, res) => {
-        res.json({"test": "test1"});
+        console.log('bam')
+        res.json(friendData);
     });
-    /*app.route("/api/friends")
-        /*.all() for body parser?*/
-        /*.get((req, res) => {
-            res.json({"test": "test1"});
+   /* app.route("/api/friends")
+        .get((req, res) => {
+            // let friendMatches = app.use(express.json(friendData));
+            res.json(friendData);
         })
-        .post((req, res) => {
-            path("../data/friends.json").push(req);
+        /*.post((req, res) => {
+            let newFriend = app.use(express.urlencoded(req.body));
+            friendData.push(newFriend);
         });*/
 }
