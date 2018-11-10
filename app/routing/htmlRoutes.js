@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = function(app){
     app.get("/*", (req, res) => {
         let filePath = req.url;
@@ -11,9 +9,9 @@ module.exports = function(app){
             case "/":
                 res.sendFile("index.html", options);
                 break;
-            default:
+            /*default:
                 res.send("404");
-                break;
+                break;*/
         }
     });
 }
