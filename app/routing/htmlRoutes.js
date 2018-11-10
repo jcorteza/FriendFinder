@@ -1,12 +1,18 @@
+const path = require("path");
+
 module.exports = function(app){
     app.get("/*", (req, res) => {
-        path = req.url;
-        switch(path){
+        let filePath = req.url;
+        const options = {root: `${__dirname}/../public/`};
+        switch(filePath){
             case "/survey":
-                res.send("Survey Page");
+                res.sendFile("survey.html", options);
+                break;
+            case "/":
+                res.sendFile("index.html", options);
                 break;
             default:
-                res.send("Index page");
+                res.send("404");
                 break;
         }
     });
