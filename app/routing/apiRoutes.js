@@ -6,13 +6,6 @@ module.exports = function(app) {
         res.json(friendData);
     });
 
-    app.get("/api/friends/:name", (req, res) => {
-        let friendMatch = req.params.name;
-        friendData.find((friend) => { 
-            if(friend.name === friendMatch) res.send(friend);
-        });
-    });
-
     app.post("/api/friends", (req, res) => {
         let newFriend = req.body;
         friendData.push(newFriend);
@@ -23,6 +16,7 @@ module.exports = function(app) {
             console.log("friends.json ammended");
         });*/
         let scoreDiff;
+        let friendMatch;
         for(let friend in friendData){
             if(friend.name !== newFriend.name){
                 let thisFriendScores = friendData.friend.scores;
@@ -30,10 +24,16 @@ module.exports = function(app) {
                 for(i=0; i < thisFriendScores.length; i++){
                     thisDiff += Math.abs(parseInt(thisFriendScores[i]) - parseInt(newFriend.scores[i]));
                 }
-                (!scoreDiff)? scoreDiff = thisDiff :
-                (thisDiff < scoreDiff)? scoreDiff = thisDiff : scoreDiff = scoreDiff;
-                console.log(`ScoreDiffs = ${scoreDiffs}`);
+                if (!scoreDiff) {
+                    scoreDiff = thisDiff;
+                    friendMatch = friendData.friend;
+                }
+                else if(thisDiff < scoreDiff) {
+                    scoreDiff = thisDiff;
+                    friendMatch = friendData.friend;
+                }
             }
         }
+        console.log(friendMatch);
     });
 }
