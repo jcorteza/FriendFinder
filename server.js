@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT | 3020;
+const PORT = process.env.PORT;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
