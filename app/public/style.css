@@ -7,3 +7,7 @@ a.nav-link {
     font-size: .85rem;
     margin: 0;
 }
+#friendPic {
+  width: 100%;
+  height: auto;
+}

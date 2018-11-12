@@ -9,9 +9,25 @@
 </head>
 <body>
     <div class="container my-2">
+        <div class="modal" id="resultsModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Best Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="friendName"></p>
+                        <img id="friendPic"/>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h1 class="h2 mb-2">Friend Finder Survey</h1>
         <hr class="pb-0">
-        <form>
+        <form class="mb-3">
             <div class="form-group">
                 <label class="h6" for="name">Name</label>
                 <input class="form-control" id="name" type="text" name="user_name" placeholder="e.g. John Smith" required/>
@@ -278,10 +294,11 @@
                         <label class="form-check-label" for="strongly_agree">5&ndash;Strongly Agree</label>
                     </div>
                 </div>
-                <a href="/api/friends" role="button" class="btn btn-primary mt-3 mb-5" id="makeFriend">Meet Your New Friend</a>
+                <button type="submit" data-toggle="modal" data-target="#resultsModal" class="btn btn-primary mt-3 mb-5" id="makeFriend">Meet Your New Friend</button>
             </div>
         </div>
         </form>
+        <a href="/api/friends">API Friends List</a> | <a href="https://github.com/jcorteza/FriendFinder">GitHub Repo</a>
     </div>
     <script
     src="http://code.jquery.com/jquery-3.3.1.js"
