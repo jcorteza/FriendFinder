@@ -1,17 +1,11 @@
-module.exports = function(app){
-    app.get("/*", (req, res) => {
-        let filePath = req.url;
-        const options = {root: `${__dirname}/../public/`};
-        switch(filePath){
-            case "/survey":
-                res.sendFile("survey.html", options);
-                break;
-            case "/":
-                res.sendFile("index.html", options);
-                break;
-            /*default:
-                res.send("404");
-                break;*/
-        }
+module.exports = function(express, app){
+    const options = {root: `${__dirname}/../public/`};
+
+    app.get("/survey", (req, res) => {
+        res.sendFile("survey.html", options);
+    }).use(express.static(`${__dirname}/../public/`));
+
+    app.get("/", (req, res) => {
+        res.sendFile("index.html", options);
     });
 }

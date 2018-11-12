@@ -1,0 +1,9 @@
+#survey {
+  position: relative;
+  height: 60vh;
+  overflow-y: scroll; 
+}
+a.nav-link {
+    font-size: .85rem;
+    margin: 0;
+}
